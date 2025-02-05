@@ -1,0 +1,30 @@
+console.log("top of the script");
++
++
+const butt = document.getElementById("butt");
++
+const container = document.querySelector(".container");
++
++
+butt.addEventListener("click", async () => {
++
+try {
++
+const posts = await getData();
++
+container.innerHTML = ""; // Clear previous content
++
+posts.forEach(async (post) => {
++
+const card = createPostCard(post);
++
+container.appendChild(card);
++
++
+// Fetch and add comments to each post card
++
+const comments = await getComments(post.id);
++
+Script.js
++
+knr-wput-hya
