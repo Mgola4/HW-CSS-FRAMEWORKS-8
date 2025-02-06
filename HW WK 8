@@ -1,7 +1,6 @@
-Michael Gola
-Cohart 8 
-Week 8 HW 
-
+//Michael Gola
+//Cohart 8 
+//Week 8 HW 
 console.log("top of the script");
 
 const butt = document.getElementById("butt");
@@ -11,11 +10,30 @@ butt.addEventListener("click", async () => {
   try {
     const posts = await getData();
     container.innerHTML = ""; // Clear previous content
-    posts.forEach(async (post) => {
+
+    for (const post of posts) {
       const card = createPostCard(post);
       container.appendChild(card);
 
       // Fetch and add comments to each post card
       const comments = await getComments(post.id);
-Script.js
-knr-wput-hya
+
+      // Assuming you have a function to display comments
+      displayComments(comments, card);
+    }
+  } catch (error) {
+    console.error("Error fetching posts:", error);
+  }
+});
+
+// Example function to append comments to a post card
+function displayComments(comments, card) {
+  const commentsSection = document.createElement("div");
+  commentsSection.classList.add("comments");
+  comments.forEach(comment => {
+    const commentElem = document.createElement("p");
+    commentElem.textContent = comment.text;
+    commentsSection.appendChild(commentElem);
+  });
+  card.appendChild(commentsSection);
+}
