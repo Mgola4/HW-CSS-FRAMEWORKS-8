@@ -1,7 +1,3 @@
-Michael Gola
-Cohart 8 
-Week 8 HW 
-
 console.log("top of the script");
 
 const butt = document.getElementById("butt");
